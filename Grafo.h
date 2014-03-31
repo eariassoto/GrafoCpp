@@ -37,7 +37,6 @@ public:
 		};
 
 		int id;
-		int longitud;
 		Nodo * siguiente;
 		Arista * arista;
 
@@ -59,7 +58,7 @@ public:
 private:
 
 	Nodo * nodo;
-	int longitud;
+
 };
 
 #endif /* GRAFO_H_ */
