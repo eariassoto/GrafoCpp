@@ -32,10 +32,10 @@ int main() {
    grafo->borrarNodo(5);
 
    cout << *grafo << endl;
-/*
+
    grafo->borrarArista(34, 2);
    grafo->borrarArista(34, 106);
 
-   cout << *grafo << endl;*/
+   cout << *grafo << endl;
    return 0;
 }

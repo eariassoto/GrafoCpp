@@ -70,22 +70,17 @@ void Grafo::agregarArista(int idNodo, int destino, int peso) {
 }
 
 void Grafo::borrarNodo(int id) {
-	if (!this->vacia()) {
+	if (!vacia()) {
 		if (nodo->id == id) { //cabeza
-			if (nodo->siguiente) {
-				Nodo * borrar = nodo;
-				nodo = nodo->siguiente;
-				borrar->siguiente = 0;
-				delete borrar;
-			} else {
-				delete nodo;
-				nodo = 0;
-			}
+			Nodo * borrar = nodo;
+			nodo = nodo->siguiente;
+			borrar->siguiente = 0;
+			delete borrar;
 		} else {
 			Nodo * tmp = nodo;
 			while (tmp->siguiente && tmp->siguiente->id != id)
 				tmp = tmp->siguiente;
-			if (tmp->siguiente->id == id) {
+			if (tmp->siguiente && tmp->siguiente->id == id) {
 				Nodo * borrar = tmp->siguiente;
 				tmp->siguiente = tmp->siguiente->siguiente;
 				borrar->siguiente = 0;
@@ -163,22 +158,17 @@ void Grafo::Nodo::agregarArista(int destino, int peso) {
 }
 
 void Grafo::Nodo::borrarArista(int destino) {
-	if (this->buscarArista(destino)) {
+	if (!vacia()) {
 		if (arista->destino == destino) { //cabeza
-			if (arista->siguiente) {
-				Arista * borrar = arista;
-				arista = arista->siguiente;
-				borrar->siguiente = 0;
-				delete borrar;
-			} else {
-				delete arista;
-				arista = 0;
-			}
+			Arista * borrar = arista;
+			arista = arista->siguiente;
+			borrar->siguiente = 0;
+			delete borrar;
 		} else {
 			Arista * tmp = arista;
 			while (tmp->siguiente && tmp->siguiente->destino != destino)
 				tmp = tmp->siguiente;
-			if (tmp->siguiente->destino == destino) {
+			if (tmp->siguiente && tmp->siguiente->destino == destino) {
 				Arista * borrar = tmp->siguiente;
 				tmp->siguiente = tmp->siguiente->siguiente;
 				borrar->siguiente = 0;
